@@ -30,8 +30,49 @@
     </section>
   </main>
 
+  <form action = # method="post">
+  <fieldset>
+    <legend>Your Details</legend>
+
+    <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    </div>
+
+    <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Your Message</legend>
+
+    <div>
+      <label for ="subject">Subject:</label>
+      <select id="subject" name="subject" required>
+        <option value ="" disabled selected>Select a subject</option>
+        <option value="production-question">Product Question</option>
+        <option value="order-status">Order Status</option>
+        <option value="wholesale">Wholesale Enquiry</option>
+        <option value="other">Something Else</option>
+      </select> 
+    </div>
+
+    <div>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+    <button type="submit">Send Message</button>
+    </div>
+  </fieldset>
+
+
+  
+</form>
+
   <footer>
     <p>&copy; 2026 Rutchii's Anyks Anyks. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
