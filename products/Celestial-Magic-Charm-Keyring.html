@@ -4,20 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Celestial Magic Charm Keyring</title>
-  
+  <link rel="stylesheet" href="../style.css">
 </head>
-<body style="text-align: center;">
 
-  <header>
-    <h1>Rutchii's Anyks Anyks</h1>
+
+<header>
+  <div class="header-content">
+    <h1>🍯⭐Rutchii's Anyk Anyk🎀☁️</h1>
+
     <nav>
-      <ul style="list-style-type: none; padding: 0;">
+      <ul>
         <li><a href="../index.html">Home</a></li>
         <li><a href="../about.html">About</a></li>
         <li><a href="../contact.html">Contact</a></li>
       </ul>
     </nav>
-  </header>
+  </div>
+</header>
 
   <main>
     <h1>Celestial Magic Charm Keyring</h1>
@@ -27,7 +30,7 @@
     <p>Discover the magic of our Celestial Magic Charm Keyring! This enchanting keyring features a stunning celestial design, perfect for adding a touch of whimsy to your keys. Made with high-quality materials, it's both durable and beautiful.</p>
 
     <h2>Product Specifications</h2>
-    <table border="1" style="margin: 0 auto; border-collapse: collapse; text-align: left; cellpadding: 8;">
+    
       <thead>
         <tr>
           <th>Category</th>
@@ -55,6 +58,52 @@
     </table>
   </main>
 
+  <section id="product-inquiry">
+    <h2>Inquire About Orderning This Product</h2>
+
+    <form action="#" methods="post">
+      <p>
+        <label for="visitor-email"> Your Email Address (required):</label><br>
+        <input type="email" id="visitor-email" name="visitor-email" required>
+      </p>
+
+      <p>
+        <label for="order-quantity"> Quantity:</label><br>
+        <input type="number" id="order-quantity" name="quantity" min="1" max="20" value="1">
+      </p>
+
+      <fieldset>
+      <legend>Preferred Delivery Method</legend>
+      
+      <input type="radio" id="standard" name="delivery_method" value="standard" checked>
+      <label for="standard">Standard Shipping (3–5 business days)</label><br>
+
+      <input type="radio" id="express" name="delivery_method" value="express">
+      <label for="express">Express Delivery (1–2 business days)</label><br>
+
+      <input type="radio" id="pickup" name="delivery_method" value="pickup">
+      <label for="pickup">Local Store Pickup</label>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+      <legend>Optional Extras</legend>
+
+      <input type="checkbox" id="gift-wrap" name="extras" value="gift_wrapping">
+      <label for="gift-wrap">Include Gift Wrapping</label><br>
+
+      <input type="checkbox" id="express-handling" name="extras" value="express_handling">
+      <label for="express-handling">Priority Warehouse Handling</label><br>
+
+      <input type="checkbox" id="insurance" name="extras" value="shipping_insurance">
+      <label for="insurance">Add Shipping Protection / Insurance</label>
+    </fieldset>
+
+    <br>
+
+    <button type="submit">Submit Inquiry</button>
+  </form>
   <footer>
     <p>&copy; 2026 Rutchii's Anyks Anyks. All rights reserved.</p>
   </footer>
