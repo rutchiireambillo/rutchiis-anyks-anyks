@@ -98,6 +98,16 @@ main {
   padding: 50px 0;
 }
 
+table {
+  margin: 0 auto 30px auto; /* Centers the block-level table element */
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: center; /* Centers text inside each cell */
+  padding: 10px 15px; /* Adds spacing so text isn't cramped */
+}
+
 footer {
   padding: 20px;
   text-align: center;
@@ -130,6 +140,7 @@ footer p {
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
   align-items: stretch;
+  
 }
 
 article {
