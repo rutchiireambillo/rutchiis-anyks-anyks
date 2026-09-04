@@ -1,3 +1,16 @@
+/* ==========================================================================
+   1. VARIABLES
+   ========================================================================== */
+:root {
+  --brand-color: rgb(210, 193, 120);
+  --dark-ink: rgb(20, 20, 48);
+  --muted-grey: rgb(120, 120, 140);
+  --light-bg: rgb(30, 30, 66);
+}
+
+/* ==========================================================================
+   2. BASE STYLES
+   ========================================================================== */
 * {
   box-sizing: border-box;
 }
@@ -11,17 +24,31 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: rgb(30, 30, 66);
-  color: rgb(210, 193, 120);
+  background-color: var(--light-bg);
+  color: var(--brand-color);
   font-family: Arial, sans-serif;
   line-height: 1.6;
   text-align: center;
 }
 
+h1,
+h2,
+h3 {
+  color: var(--brand-color);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2.4rem;
+}
+
+/* ==========================================================================
+   3. LAYOUT REGIONS
+   ========================================================================== */
 header {
-  background-color: rgb(20, 20, 48);
+  background-color: var(--dark-ink);
   padding: 20px 5%;
-  border-bottom: 2px solid rgb(210, 193, 120);
+  border-bottom: 2px solid var(--brand-color);
 }
 
 .header-content {
@@ -35,52 +62,32 @@ header {
 
 header h1 {
   margin: 0;
-  color: rgb(210, 193, 120);
+  color: var(--brand-color);
   font-size: 1.5rem;
   white-space: nowrap;
 }
 
+/* Style the Nav Bar */
 nav ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-nav a {
-  color: rgb(210, 193, 120);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.05rem;
-}
-
-nav a:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-nav ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+nav li {
+  display: inline-block;
+  margin: 0 15px;
 }
 
 nav a {
-  color: rgb(210, 193, 120);
+  color: var(--brand-color);
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1rem;
 }
 
 nav a:hover {
-  color: white;
+  color: #ffffff;
   text-decoration: underline;
 }
 
@@ -91,21 +98,25 @@ main {
   padding: 50px 0;
 }
 
+footer {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--dark-ink);
+  border-top: 2px solid var(--brand-color);
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   4. COMPONENTS
+   ========================================================================== */
+/* Shop Intro */
 .shop-introduction {
   max-width: 850px;
   margin: 0 auto 45px;
   text-align: center;
-}
-
-h1,
-h2,
-h3 {
-  color: rgb(210, 193, 120);
-}
-
-h1 {
-  margin-top: 0;
-  font-size: 2.4rem;
 }
 
 .shop-introduction p {
@@ -113,6 +124,7 @@ h1 {
   font-size: 1.05rem;
 }
 
+/* Product Cards */
 .products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -124,6 +136,9 @@ article {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid var(--muted-grey);
+  border-radius: 8px;
+  padding: 15px;
 }
 
 article h3 {
@@ -144,8 +159,7 @@ article img {
   border-radius: 8px;
 }
 
-
-
+/* Secondary Page Sections */
 .about-section,
 .contact-section {
   max-width: 700px;
@@ -153,7 +167,7 @@ article img {
   padding: 35px;
   text-align: center;
   background-color: rgb(42, 42, 82);
-  border: 1px solid rgb(210, 193, 120);
+  border: 1px solid var(--brand-color);
   border-radius: 12px;
 }
 
@@ -182,25 +196,16 @@ article img {
 }
 
 .contact-section a {
-  color: rgb(210, 193, 120);
+  color: var(--brand-color);
 }
 
 .contact-section a:hover {
-  color: white;
+  color: #ffffff;
 }
 
-
-footer {
-  padding: 20px;
-  text-align: center;
-  background-color: rgb(20, 20, 48);
-  border-top: 2px solid rgb(210, 193, 120);
-}
-
-footer p {
-  margin: 0;
-}
-
+/* ==========================================================================
+   5. MEDIA QUERIES
+  ========================================================================== */
 @media (max-width: 850px) {
   .products {
     grid-template-columns: 1fr;
@@ -213,9 +218,9 @@ footer p {
 }
 
 @media (max-width: 500px) {
-  nav ul {
-    flex-direction: column;
-    gap: 12px;
+  nav li {
+    display: block;
+    margin: 10px 0;
   }
 
   h1 {
@@ -232,5 +237,3 @@ footer p {
     padding: 25px 15px;
   }
 }
-
-
