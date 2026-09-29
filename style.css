@@ -22,13 +22,20 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   background-color: var(--light-bg);
   color: var(--brand-color);
   font-family: Arial, sans-serif;
   line-height: 1.6;
   text-align: center;
+
+  /* CSS Grid Skeleton */
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-areas:
+    "masthead masthead"
+    "side     main"
+    "foot     foot";
+  gap: 16px;
 }
 
 h1,
@@ -43,8 +50,13 @@ h1 {
 }
 
 /* ==========================================================================
-   3. LAYOUT REGIONS
+   3. LAYOUT REGIONS & GRID AREAS
    ========================================================================== */
+header { grid-area: masthead; }
+aside  { grid-area: side; }
+main   { grid-area: main; }
+footer { grid-area: foot; }
+
 header,
 .site-header {
   background-color: var(--dark-ink);
@@ -72,7 +84,25 @@ header h1 {
   white-space: nowrap;
 }
 
-/* Style the Nav Bar */
+/* Sidebar Styling using existing theme colors */
+aside {
+  background-color: rgb(42, 42, 82);
+  padding: 20px;
+  border: 1px solid var(--brand-color);
+  border-radius: 8px;
+  text-align: left;
+}
+
+aside h3 {
+  margin-top: 0;
+}
+
+aside ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Nav Bar */
 nav ul,
 .site-header nav ul {
   margin: 0;
@@ -99,10 +129,9 @@ nav a:hover {
 }
 
 main {
-  width: min(1100px, 90%);
-  margin: 0 auto;
-  flex: 1;
-  padding: 50px 0;
+  width: 100%;
+  margin: 0;
+  padding: 20px 10px;
 }
 
 footer {
@@ -119,7 +148,6 @@ footer p {
 /* ==========================================================================
    4. COMPONENTS
    ========================================================================== */
-/* Shop Intro - Centered Horizontally and Vertically */
 .shop-introduction {
   max-width: 850px;
   min-height: 250px;
@@ -136,7 +164,7 @@ footer p {
   font-size: 1.05rem;
 }
 
-/* Product Cards - Responsive Flexbox Layout */
+/* Flexbox for product cards inside main */
 .products,
 .product-grid {
   display: flex;
@@ -172,6 +200,14 @@ article img {
   object-fit: cover;
   margin: 20px auto 0;
   border-radius: 8px;
+}
+
+article a {
+  color: var(--brand-color);
+}
+
+article a:hover {
+  color: #ffffff;
 }
 
 /* Secondary Page Sections */
@@ -222,6 +258,15 @@ article img {
    5. MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 500px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "masthead"
+      "side"
+      "main"
+      "foot";
+  }
+
   nav ul {
     flex-direction: column;
     gap: 10px;
