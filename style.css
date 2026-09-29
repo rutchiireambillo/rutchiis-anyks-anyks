@@ -9,7 +9,7 @@
 }
 
 /* ==========================================================================
-   2. BASE STYLES
+   2. BASE STYLES & MOBILE-FIRST GRID LAYOUT (Default / Phone)
    ========================================================================== */
 * {
   box-sizing: border-box;
@@ -28,13 +28,14 @@ body {
   line-height: 1.6;
   text-align: center;
 
-  /* CSS Grid Skeleton */
+  /* Mobile Grid: Single column, stacking main BEFORE side */
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    "masthead masthead"
-    "side     main"
-    "foot     foot";
+    "masthead"
+    "main"
+    "side"
+    "foot";
   gap: 16px;
 }
 
@@ -46,7 +47,7 @@ h3 {
 
 h1 {
   margin-top: 0;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
 }
 
 /* ==========================================================================
@@ -57,21 +58,19 @@ aside  { grid-area: side; }
 main   { grid-area: main; }
 footer { grid-area: foot; }
 
+/* Header Formatting */
 header,
 .site-header {
   background-color: var(--dark-ink);
-  padding: 20px 5%;
+  padding: 15px 5%;
   border-bottom: 2px solid var(--brand-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 15px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -81,16 +80,44 @@ header h1 {
   margin: 0;
   color: var(--brand-color);
   font-size: 1.5rem;
-  white-space: nowrap;
 }
 
-/* Sidebar Styling using existing theme colors */
+/* Nav Bar */
+nav ul,
+.site-header nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  color: var(--brand-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Sidebar Styling */
 aside {
   background-color: rgb(42, 42, 82);
   padding: 20px;
   border: 1px solid var(--brand-color);
   border-radius: 8px;
   text-align: left;
+  margin: 0 10px;
 }
 
 aside h3 {
@@ -102,38 +129,14 @@ aside ul {
   margin: 0;
 }
 
-/* Nav Bar */
-nav ul,
-.site-header nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-nav li {
-  margin: 0;
-}
-
-nav a {
-  color: var(--brand-color);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-nav a:hover {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
+/* Main Content Area */
 main {
   width: 100%;
   margin: 0;
-  padding: 20px 10px;
+  padding: 10px;
 }
 
+/* Footer Formatting */
 footer {
   padding: 20px;
   text-align: center;
@@ -150,31 +153,30 @@ footer p {
    ========================================================================== */
 .shop-introduction {
   max-width: 850px;
-  min-height: 250px;
-  margin: 0 auto 45px;
+  margin: 0 auto 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 0 10px;
 }
 
 .shop-introduction p {
   margin: 0 auto;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
-/* Flexbox for product cards inside main */
+/* Product Cards - Auto-fit responsive grid without horizontal overflow */
 .products,
 .product-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 article,
 .product-card {
-  flex: 1 1 240px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,11 +184,12 @@ article,
   border-radius: 8px;
   padding: 15px;
   margin: 0;
+  background-color: rgb(35, 35, 75);
 }
 
 article h3 {
   margin-top: 0;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
 
 article p {
@@ -195,10 +198,10 @@ article p {
 
 article img {
   display: block;
-  width: 200px;
-  height: 200px;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
-  margin: 20px auto 0;
+  margin: 15px auto 0;
   border-radius: 8px;
 }
 
@@ -215,7 +218,7 @@ article a:hover {
 .contact-section {
   max-width: 700px;
   margin: 0 auto;
-  padding: 35px;
+  padding: 20px 15px;
   text-align: center;
   background-color: rgb(42, 42, 82);
   border: 1px solid var(--brand-color);
@@ -224,15 +227,15 @@ article a:hover {
 
 .about-section h2 {
   margin-top: 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .about-section img {
   display: block;
-  width: 200px;
-  height: 200px;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
-  margin: 25px auto 0;
+  margin: 20px auto 0;
   border-radius: 50%;
 }
 
@@ -254,35 +257,65 @@ article a:hover {
   color: #ffffff;
 }
 
-/* ==========================================================================
-   5. MEDIA QUERIES
-   ========================================================================== */
-@media (max-width: 500px) {
-  body {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "masthead"
-      "side"
-      "main"
-      "foot";
-  }
+/* Forms & Tables Responsiveness */
+form {
+  max-width: 100%;
+  text-align: left;
+}
 
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table th, table td {
+  border: 1px solid var(--muted-grey);
+  padding: 8px;
+  text-align: left;
+}
+
+/* ==========================================================================
+   5. TABLET & DESKTOP ENHANCEMENTS (min-width Media Query)
+   ========================================================================== */
+@media (min-width: 700px) {
+  body {
+    grid-template-columns: 220px 1fr;
+    grid-template-areas:
+      "masthead masthead"
+      "side     main"
+      "foot     foot";
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
+  }
+
+  .header-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  header h1 {
+    white-space: nowrap;
+  }
+
+  aside {
+    margin: 0;
   }
 
   main {
-    width: 92%;
-    padding: 35px 0;
-  }
-
-  .about-section,
-  .contact-section {
-    padding: 25px 15px;
+    padding: 20px;
   }
 }
