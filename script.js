@@ -36,3 +36,60 @@ console.log("Shop Name:", guideName);
 console.log("Current Year:", currentYear);
 console.log("Total Featured Items (Running Count):", runningCount);
 console.log("Average Price (Calculated):", averagePrice + " Pesos");
+
+
+// ==========================================
+// CODE THAT CHOOSES (Decisions Layer)
+// ==========================================
+
+// ----------------------------------------------------
+// 1. Stock Status Decision (if / else if / else chain)
+// ----------------------------------------------------
+const stockCount = Number(5); // Product stock quantity
+let stockMessage = "";
+
+if (stockCount > 10) {
+  stockMessage = "In stock";
+} else if (stockCount >= 1) {
+  stockMessage = "Only a few left";
+} else {
+  stockMessage = "Sold out";
+}
+
+const stockElement = document.getElementById("stock-status");
+if (stockElement) {
+  stockElement.textContent = `📦 Stock: ${stockMessage}`;
+}
+
+// ----------------------------------------------------
+// 2. Free Delivery Check (&&, ===, and ternary operator)
+// ----------------------------------------------------
+// Free delivery condition: orderTotal >= 150 AND isMember === true
+const orderTotal = Number(totalPrice); // 170 Pesos from items
+const isMember = true;
+
+const qualifiesForFreeDelivery = (orderTotal >= 150 && isMember === true);
+const deliveryFee = qualifiesForFreeDelivery ? 0 : 150;
+const finalTotal = orderTotal + deliveryFee;
+
+const deliveryElement = document.getElementById("delivery-status");
+if (deliveryElement) {
+  deliveryElement.textContent = `🚚 Delivery: ${deliveryFee === 0 ? "Free delivery" : "₱" + deliveryFee} | Final Total: ₱${finalTotal}`;
+}
+
+// ----------------------------------------------------
+// 3. Shop Open/Closed Decision (boolean, ===, and ternary)
+// ----------------------------------------------------
+const isOpen = true; // Boolean value
+
+const shopStatusMessage = (isOpen === true) ? "Open today" : "Closed today";
+
+const shopElement = document.getElementById("shop-status");
+if (shopElement) {
+  shopElement.textContent = `🕒 Store Status: ${shopStatusMessage}`;
+}
+
+// Verification console logs
+console.log("Stock Status:", stockMessage);
+console.log("Delivery Fee:", deliveryFee, "Final Total:", finalTotal);
+console.log("Store Status:", shopStatusMessage);
